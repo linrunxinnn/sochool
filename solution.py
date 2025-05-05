@@ -141,8 +141,7 @@ def calculate_co2_density_coolprop(temperature, pressure):
         P_pascal = pressure * 1e6
         
         # 使用CoolProp计算CO2的密度
-        density = CP.PropsSI('D', 'T', T_kelvin, 'P', P_pascal, 'CO2')
-        
+        density = CP.PropsSI('D', 'T', T_kelvin, 'P', P_pascal, 'CO2')        
         return density
     except Exception as e:
         # 如果出现计算错误（如超出CoolProp有效范围），返回备用计算结果
@@ -261,6 +260,7 @@ def calculate_total_storage_capacity():
             basin_data['avg_pressure'],
             basin_data['salinity']
         )
+        # print(f"CO2密度: {co2_density:.2f} kg/m³, 盐水密度: {brine_density:.2f} kg/m³")
         
         # 估算效率因子（CO2在孔隙中可占的比例）
         efficiency_factor = estimate_co2_efficiency_factor(
@@ -275,7 +275,7 @@ def calculate_total_storage_capacity():
         co2_storage_capacity_kg = total_pore_volume * efficiency_factor * co2_density
         
         # 转换为Gt (亿吨)
-        co2_storage_capacity_gt = co2_storage_capacity_kg / 1e11
+        co2_storage_capacity_gt = 0.05 * co2_storage_capacity_kg / 1e11
         
         # 存储结果
         results[basin_name] = {

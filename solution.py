@@ -23,77 +23,104 @@ np.random.seed(42)
 # 数据来源：基于文献整理的中国主要盆地深层盐水层特性
 # 注意：以下数据为根据相关文献估算的近似值，实际应用时需使用准确数据
 basins = {
-    '鄂尔多斯盆地': {
-        'area': 25e4,        # 面积 (km²)
-        'avg_thickness': 120,  # 平均厚度 (m)
-        'avg_porosity': 0.15,  # 平均孔隙度
-        'avg_depth': 2500,     # 平均深度 (m)
-        'avg_temperature': 75,  # 平均温度 (°C)
-        'avg_pressure': 25,     # 平均压力 (MPa)
-        'salinity': 150000,     # 盐度 (ppm)
-    },
     '松辽盆地': {
-        'area': 26e4,
-        'avg_thickness': 100,
-        'avg_porosity': 0.18,
-        'avg_depth': 2200,
-        'avg_temperature': 70,
-        'avg_pressure': 22,
-        'salinity': 120000,
+        'area': 27e3,        # 面积 (km²)
+        'avg_thickness': 115,  # 平均厚度 (m)
+        'avg_porosity': 0.1,  # 平均孔隙度
+        'avg_depth': 2250,     # 平均深度 (m)
+        'avg_temperature': 75,  # 长期平均温度 (°C)
+        'avg_pressure': 23,     # 长期平均压力 (MPa)
+        'salinity': 85000,     # 盐度（溶解盐的浓度） (ppm)
     },
-    '塔里木盆地': {
-        'area': 56e4,
-        'avg_thickness': 150,
-        'avg_porosity': 0.12,
-        'avg_depth': 3000,
+    '二连盆地': {
+        'area': 11e3,
+        'avg_thickness': 75,
+        'avg_porosity': 0.08,
+        'avg_depth': 2750,
         'avg_temperature': 85,
-        'avg_pressure': 30,
-        'salinity': 180000,
-    },
-    '四川盆地': {
-        'area': 18e4,
-        'avg_thickness': 90,
-        'avg_porosity': 0.13,
-        'avg_depth': 2800,
-        'avg_temperature': 80,
-        'avg_pressure': 28,
-        'salinity': 160000,
-    },
-    '渤海湾盆地': {
-        'area': 20e4,
-        'avg_thickness': 110,
-        'avg_porosity': 0.16,
-        'avg_depth': 2300,
-        'avg_temperature': 72,
-        'avg_pressure': 24,
-        'salinity': 130000,
-    },
-    '珠江口盆地': {
-        'area': 10e4,
-        'avg_thickness': 85,
-        'avg_porosity': 0.17,
-        'avg_depth': 2100,
-        'avg_temperature': 68,
-        'avg_pressure': 21,
+        'avg_pressure': 27,
         'salinity': 110000,
     },
-    '准噶尔盆地': {
-        'area': 13e4,
-        'avg_thickness': 95,
-        'avg_porosity': 0.14,
-        'avg_depth': 2600,
-        'avg_temperature': 77,
-        'avg_pressure': 26,
-        'salinity': 140000,
+    '鄂尔多斯盆地': {
+        'area': 55e3,
+        'avg_thickness': 160,
+        'avg_porosity': 0.06,
+        'avg_depth': 3000,
+        'avg_temperature': 95,
+        'avg_pressure': 33,
+        'salinity': 150000,
+    },
+    '渤海湾盆地': {
+        'area': 4e4,
+        'avg_thickness': 140,
+        'avg_porosity': 0.13,
+        'avg_depth': 2500,
+        'avg_temperature': 85,
+        'avg_pressure': 28,
+        'salinity': 130000,
+    },
+    '苏北盆地': {
+        'area': 9e3,
+        'avg_thickness': 90,
+        'avg_porosity': 0.15,
+        'avg_depth': 2000,
+        'avg_temperature': 72,
+        'avg_pressure': 20,
+        'salinity': 75000,
+    },
+    '江汉盆地': {
+        'area': 7e3,
+        'avg_thickness': 120,
+        'avg_porosity': 0.11,
+        'avg_depth': 1800,
+        'avg_temperature': 65,
+        'avg_pressure': 15,
+        'salinity': 220000,
+    },
+    '四川盆地': {
+        'area': 8e4,
+        'avg_thickness': 220,
+        'avg_porosity': 0.03,
+        'avg_depth': 4000,
+        'avg_temperature': 125,
+        'avg_pressure': 50,
+        'salinity': 280000,
     },
     '柴达木盆地': {
-        'area': 12e4,
-        'avg_thickness': 80,
-        'avg_porosity': 0.11,
-        'avg_depth': 2400,
-        'avg_temperature': 73,
-        'avg_pressure': 24,
-        'salinity': 150000,
+        'area': 3e4,
+        'avg_thickness': 180,
+        'avg_porosity': 0.12,
+        'avg_depth': 1750,
+        'avg_temperature': 55,
+        'avg_pressure': 15,
+        'salinity': 300000,
+    },
+    '准噶尔盆地': {
+        'area': 6e4,
+        'avg_thickness': 300,
+        'avg_porosity': 0.1,
+        'avg_depth': 3000,
+        'avg_temperature': 85,
+        'avg_pressure': 33,
+        'salinity': 115000,
+    },
+    '塔里木盆地': {
+        'area': 11e4,
+        'avg_thickness': 450,
+        'avg_porosity': 0.05,
+        'avg_depth': 4500,
+        'avg_temperature': 115,
+        'avg_pressure': 47,
+        'salinity': 220000,
+    },
+    '海拉尔盆地': {
+        'area': 6e3,
+        'avg_thickness': 65,
+        'avg_porosity': 0.12,
+        'avg_depth': 2000,
+        'avg_temperature': 65,
+        'avg_pressure': 20,
+        'salinity': 85000,
     }
 }
 
@@ -225,6 +252,8 @@ def calculate_total_storage_capacity():
         porosity = basin_data['avg_porosity']
         
         total_pore_volume = area_m2 * thickness_m * porosity
+
+        print(f"盆地: {basin_name}, 总孔隙体积: {total_pore_volume:.2f} m³")
         
         # 计算CO2密度和盐水密度 (kg/m³)
         co2_density, brine_density = calculate_co2_brine_density(

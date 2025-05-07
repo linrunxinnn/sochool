@@ -28,8 +28,8 @@ basins = {
         'avg_thickness': 115,  # 平均厚度 (m)
         'avg_porosity': 0.1,  # 平均孔隙度
         'avg_depth': 2250,     # 平均深度 (m)
-        'avg_temperature': 75,  # 长期平均温度 (°C)
-        'avg_pressure': 23,     # 长期平均压力 (MPa)
+        'avg_temperature': 80,  # 长期平均温度 (°C)
+        'avg_pressure': 20,     # 长期平均压力 (MPa)
         'salinity': 85000,     # 盐度（溶解盐的浓度） (ppm)
     },
     '二连盆地': {
@@ -37,8 +37,8 @@ basins = {
         'avg_thickness': 75,
         'avg_porosity': 0.08,
         'avg_depth': 2750,
-        'avg_temperature': 85,
-        'avg_pressure': 27,
+        'avg_temperature': 71,
+        'avg_pressure': 18,
         'salinity': 110000,
     },
     '鄂尔多斯盆地': {
@@ -46,8 +46,8 @@ basins = {
         'avg_thickness': 160,
         'avg_porosity': 0.06,
         'avg_depth': 3000,
-        'avg_temperature': 95,
-        'avg_pressure': 33,
+        'avg_temperature': 90,
+        'avg_pressure': 25,
         'salinity': 150000,
     },
     '渤海湾盆地': {
@@ -55,8 +55,8 @@ basins = {
         'avg_thickness': 140,
         'avg_porosity': 0.13,
         'avg_depth': 2500,
-        'avg_temperature': 85,
-        'avg_pressure': 28,
+        'avg_temperature': 88,
+        'avg_pressure': 23,
         'salinity': 130000,
     },
     '苏北盆地': {
@@ -64,8 +64,8 @@ basins = {
         'avg_thickness': 90,
         'avg_porosity': 0.15,
         'avg_depth': 2000,
-        'avg_temperature': 72,
-        'avg_pressure': 20,
+        'avg_temperature': 67,
+        'avg_pressure': 18,
         'salinity': 75000,
     },
     '江汉盆地': {
@@ -73,8 +73,8 @@ basins = {
         'avg_thickness': 120,
         'avg_porosity': 0.11,
         'avg_depth': 1800,
-        'avg_temperature': 65,
-        'avg_pressure': 15,
+        'avg_temperature': 83,
+        'avg_pressure': 23,
         'salinity': 220000,
     },
     '四川盆地': {
@@ -82,8 +82,8 @@ basins = {
         'avg_thickness': 220,
         'avg_porosity': 0.03,
         'avg_depth': 4000,
-        'avg_temperature': 125,
-        'avg_pressure': 50,
+        'avg_temperature': 98,
+        'avg_pressure': 30,
         'salinity': 280000,
     },
     '柴达木盆地': {
@@ -91,8 +91,8 @@ basins = {
         'avg_thickness': 180,
         'avg_porosity': 0.12,
         'avg_depth': 1750,
-        'avg_temperature': 55,
-        'avg_pressure': 15,
+        'avg_temperature': 105,
+        'avg_pressure': 27,
         'salinity': 300000,
     },
     '准噶尔盆地': {
@@ -100,8 +100,8 @@ basins = {
         'avg_thickness': 300,
         'avg_porosity': 0.1,
         'avg_depth': 3000,
-        'avg_temperature': 85,
-        'avg_pressure': 33,
+        'avg_temperature': 83,
+        'avg_pressure': 23,
         'salinity': 115000,
     },
     '塔里木盆地': {
@@ -109,8 +109,8 @@ basins = {
         'avg_thickness': 450,
         'avg_porosity': 0.05,
         'avg_depth': 4500,
-        'avg_temperature': 115,
-        'avg_pressure': 47,
+        'avg_temperature': 125,
+        'avg_pressure': 40,
         'salinity': 220000,
     },
     '海拉尔盆地': {
@@ -118,8 +118,8 @@ basins = {
         'avg_thickness': 65,
         'avg_porosity': 0.12,
         'avg_depth': 2000,
-        'avg_temperature': 65,
-        'avg_pressure': 20,
+        'avg_temperature': 68,
+        'avg_pressure': 18,
         'salinity': 85000,
     }
 }
@@ -208,7 +208,7 @@ def estimate_co2_efficiency_factor(depth, porosity, temperature, pressure, salin
     考虑深度、孔隙度、温度、压力和盐度的综合影响
     """
     # 基础效率因子（行业经验值通常在0.2-0.6之间）
-    base_factor = 0.25
+    base_factor = 0.35
     
     # 深度调整（深度越大，压力越大，CO2越容易压缩进孔隙）
     depth_adjustment = 0.08 * np.tanh(depth / 3000)
@@ -559,7 +559,7 @@ def visualize_results(capacity_results, sensitivity_results):
     plt.savefig('efficiency_factor_relationship.png', dpi=300)
     
     # 7. CO2密度与温度的关系曲线 (新增)
-    typical_pressures = [10, 20, 30, 40]  # MPa
+    typical_pressures = [7, 9, 10, 11, 12, 14, 20, 30, 40, 50, 60]  # MPa
     temps = np.linspace(30, 120, 100)  # °C
     
     plt.figure(figsize=(10, 6))

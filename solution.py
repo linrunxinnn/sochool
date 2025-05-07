@@ -208,7 +208,7 @@ def estimate_co2_efficiency_factor(depth, porosity, temperature, pressure, salin
     考虑深度、孔隙度、温度、压力和盐度的综合影响
     """
     # 基础效率因子（行业经验值通常在0.2-0.6之间）
-    base_factor = 0.35
+    base_factor = 0.25
     
     # 深度调整（深度越大，压力越大，CO2越容易压缩进孔隙）
     depth_adjustment = 0.08 * np.tanh(depth / 3000)
